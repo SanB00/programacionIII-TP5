@@ -6,14 +6,17 @@ namespace TP5Grupo18
 {
     public partial class ListadoDeSucursales : System.Web.UI.Page
     {
+        /*
         protected void Page_Load(object sender, EventArgs e) {
-
+            cargarListaSucursales();
         }
 
         private void cargarListaSucursales() {
             const string consultaSQL = "SELECT * FROM Sucursal";
-            DataTable tablaTemas = new ConexionBBDD().obtenerTablaDeLaBaseDeDatos(consultaSQL);
-
+            DataTable dataTable = new ConexionBBDD().obtenerTablaDeLaBaseDeDatos(consultaSQL);
+            gvSucursales.DataSource = dataTable;
+            gvSucursales.DataBind();
         }
+        */
     }
 }
