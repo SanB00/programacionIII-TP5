@@ -4,10 +4,10 @@
     <table>
         <tr>
             <td class="colBordes">&nbsp;</td>
-            <td class="colEtiquetas">&nbsp;</td>
-            <td class="colCampos">
+            <td class="colEtiquetas">
                 <h2>Agregar sucursal</h2>
             </td>
+            <td class="colCampos">&nbsp;</td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>

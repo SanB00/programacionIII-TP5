@@ -18,7 +18,7 @@ namespace TP5Grupo18
             }
         }
         public DataTable obtenerTablaDeLaBaseDeDatos(string consultaSQL, string cadenaConexion = null, SqlParameter[] parametros = null) {
-            string connectionString = string.IsNullOrEmpty(cadenaConexion) ? ConfigurationManager.ConnectionStrings["dbViajes"].ConnectionString : cadenaConexion;
+            string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
             DataTable dataTable = new DataTable();
 
             // El bloque 'using' asegura que la conexión se cierre SIEMPRE, incluso si hay error
