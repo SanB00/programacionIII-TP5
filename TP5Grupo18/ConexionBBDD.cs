@@ -13,12 +13,12 @@ namespace TP5Grupo18
                 string dbBaseWebconfig = ConfigurationManager.ConnectionStrings[webconfigAttribute].ConnectionString;
                 return $"{dbBaseWebconfig};Initial Catalog = {nombreBBDD}";
             }
-            catch (Exception ex) {
-                throw new Exception($"Error al obtener la cadena de conexión {webconfigAttribute}: " + ex.Message);
+            catch (Exception e) {
+                throw new Exception($"Error al obtener la cadena de conexión '{webconfigAttribute}'. Revisar WEB.CONFIG: \n\n" + e.Message);
             }
         }
         public DataTable obtenerTablaDeLaBaseDeDatos(string consultaSQL, string cadenaConexion = null, SqlParameter[] parametros = null) {
-            string connectionString = string.IsNullOrEmpty(cadenaConexion) ? ConfigurationManager.ConnectionStrings["dbViajes"].ConnectionString : cadenaConexion;
+            string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
             DataTable dataTable = new DataTable();
 
             // El bloque 'using' asegura que la conexión se cierre SIEMPRE, incluso si hay error
@@ -32,8 +32,22 @@ namespace TP5Grupo18
                     sqlConnection.Open();
                     sqlDataAdapter.Fill(dataTable);
                 }
-                catch (Exception ex) {
-                    throw new Exception("Error al consultar la base de datos: " + ex.Message);
+                catch (Exception e) {
+                    if ((e is SqlException ex)) {
+                        switch (ex.Number) {
+                            // Connection & String Errors
+                            case -1: // Connection timeout
+                            case 2:  // Connection pool empty or server not found
+                            case 53: // Network-related/instance-specific error (Server not found)
+                            case 40: // Could not open connection to server
+                            case 18456: // Login failed for user (Wrong credentials in string)
+                                throw new Exception($"Connection Error: Revisar WEB.CONFIG Check your connection string or server status. Details: \n{e.Message} ");
+                            default:
+                                throw new Exception($"SQL Error ({ex.Number}): {ex.Message}");
+                        }
+                    }
+                    else
+                        throw new Exception($"Error al consultar la base de datos: \n{e.Message}");
                 }
             }
             return dataTable;
