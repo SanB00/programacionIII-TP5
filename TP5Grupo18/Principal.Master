@@ -5,14 +5,88 @@
 <html>
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .colBordes {
+            width: 10%;
+        }
+
+        .colEtiquetas {
+            width: 20%;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .colCampos {
+            width: 20%;
+            text-align: center;
+        }
+
+        .colValidacion {
+            width: 35%;
+            text-align: left;
+        }
+
+        td {
+            vertical-align: top;
+            height: 100%;
+        }
+
+            td select {
+                width: 205px;
+                height: 100%;
+            }
+
+        h3 {
+            border-bottom: 2px solid darkblue; /* Línea azul de 2px de grosor */
+            display: inline-block; /* Hace que la línea solo cubra el texto, no el ancho total */
+        }
+
+        .nav {
+            /*background-color: lightgray;*/
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            .nav li {
+                display: inline-block;
+                font-size: 18px;
+                padding: 15px;
+            }
+    </style>
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <ul class="nav">
+                <li>
+                    <asp:HyperLink ID="lnkAgregarSucursal" runat="server"
+                        NavigateUrl="~/AgregarSucursal.aspx"
+                        Text="Agregar sucursal" /></li>
+                <li>
+                    <asp:HyperLink ID="lnkListadoDeSucursales" runat="server"
+                        NavigateUrl="~/ListadoDeSucursales.aspx"
+                        Text="Listado de sucursales" /></li>
+                <li>
+                    <asp:HyperLink ID="lnkEliminarSucursal" runat="server"
+                        NavigateUrl="~/EliminarSucursal.aspx"
+                        Text="Eliminar sucursal" /></li>
+            </ul>
+            <br />
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+            <hr />
+            Grupo 18 - TP5
+                Santiago Burgos
+                Franco Casamento
+                Lautaro Gimenez
+                Elian Maspero
+                Guillermo Maydana
+                Derly Yulieth Valencia
         </div>
     </form>
 </body>

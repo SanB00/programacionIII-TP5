@@ -7,11 +7,10 @@ using System.Web.UI.WebControls;
 
 namespace TP5Grupo18
 {
-	public partial class Principal : System.Web.UI.MasterPage
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class EliminarSucursal : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e) {
 
-		}
-	}
+        }
+    }
 }
