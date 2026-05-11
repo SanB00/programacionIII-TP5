@@ -52,6 +52,25 @@ namespace TP5Grupo18
             }
             return dataTable;
         }
+
+        /* @autor: Lautaro
+         * Ejecuta una consulta SQL de tipo INSERT, UPDATE o DELETE y devuelve la cantidad de filas afectadas.
+         * Ejemplo de uso:
+         * string consulta = "UPDATE Empleados SET Salario = Salario * 1.1 WHERE Departamento = 'Ventas'";
+         * int filasAfectadas = conexion.ejecutarTransaccion(consulta);
+         */
+        public int ejecutarTransaccion(string consultaSQL) {
+            string cadenaConexion = this.obtenerCadenaDeConexion("BDSucursales");
+            SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(consultaSQL, sqlConnection);
+
+            int filasAfectadas = sqlCommand.ExecuteNonQuery(); /// INSERT, UPDATE, DELETE
+
+            sqlConnection.Close();
+            return filasAfectadas;
+        }
     }
 
 }
