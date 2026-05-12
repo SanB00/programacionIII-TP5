@@ -8,8 +8,10 @@ namespace TP5Grupo18
     public class ConexionBBDD
     {
 
-        private const string cadenaConexion = null; // @"Initial Catalog=BDSucursales;Data Source=localhost\\sqlexpress;Integrated Security=True";
+        private const string cadenaConexion = @"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
         /*
+        private const string cadenaConexion = null
+
         cadenaParaEntrega
 			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost\\sqlexpress;Integrated Security=True";
 				 
@@ -43,6 +45,13 @@ namespace TP5Grupo18
                 throw new Exception($"Error al obtener la cadena de conexión '{webconfigAttribute}'. Revisar WEB.CONFIG: \n\n" + e.Message);
             }
         }
+
+        /* @autor Santi | Elián
+         * @param consultaSQL: La consulta SQL a ejecutar. Ejemplo: "SELECT * FROM Sucursal WHERE Ciudad = @Ciudad";
+         * @param parametros: Un array de SqlParameter para evitar inyecciones SQL. Ejemplo: new SqlParameter[] { new SqlParameter("@Ciudad", "Buenos Aires") }
+         * @return DataTable con los resultados de la consulta. Si no hay resultados, devuelve un DataTable vacío (sin filas).
+         * @throws Exception con mensaje detallado en caso de error de conexión o consulta.
+         */
         public DataTable obtenerTablaDeLaBaseDeDatos(string consultaSQL, SqlParameter[] parametros = null) {
             string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
             DataTable dataTable = new DataTable();
@@ -82,7 +91,6 @@ namespace TP5Grupo18
         /* @autor: Lautaro
          * Ejecuta una consulta SQL de tipo INSERT, UPDATE o DELETE y devuelve la cantidad de filas afectadas.
          * @param consultaSQL: La consulta SQL a ejecutar. Ejemplo:´ "UPDATE Empleados SET Salario = Salario * 1.1 WHERE Departamento = 'Ventas'";
-         * int filasAfectadas = conexion.ejecutarTransaccion(consulta);
          */
         public int ejecutarTransaccion(string consultaSQL) {
             string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
