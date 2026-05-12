@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace TP5Grupo18
 {
-    public class ConexionBBDD
+    public class Conexion
     {
 
         private const string cadenaConexion = @"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
@@ -47,12 +47,13 @@ namespace TP5Grupo18
         }
 
         /* @autor Santi | Elián
+         * ejecutarConsulta antes llamado obtenerTablaDeLaBaseDeDatos
          * @param consultaSQL: La consulta SQL a ejecutar. Ejemplo: "SELECT * FROM Sucursal WHERE Ciudad = @Ciudad";
          * @param parametros: Un array de SqlParameter para evitar inyecciones SQL. Ejemplo: new SqlParameter[] { new SqlParameter("@Ciudad", "Buenos Aires") }
          * @return DataTable con los resultados de la consulta. Si no hay resultados, devuelve un DataTable vacío (sin filas).
          * @throws Exception con mensaje detallado en caso de error de conexión o consulta.
          */
-        public DataTable obtenerTablaDeLaBaseDeDatos(string consultaSQL, SqlParameter[] parametros = null) {
+        public DataTable ejecutarConsulta(string consultaSQL, SqlParameter[] parametros = null) {
             string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
             DataTable dataTable = new DataTable();
 

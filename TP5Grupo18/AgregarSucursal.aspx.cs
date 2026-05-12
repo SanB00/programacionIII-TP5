@@ -14,7 +14,7 @@ namespace TP5Grupo18
         }
         private void cargarProvincias() {
             const string consultaSQL = "SELECT Id_Provincia, DescripcionProvincia FROM Provincia ORDER BY DescripcionProvincia";
-            DataTable dataTable = new ConexionBBDD().obtenerTablaDeLaBaseDeDatos(consultaSQL);
+            DataTable dataTable = new Conexion().ejecutarConsulta(consultaSQL);
 
             ddlProvincias.Items.Clear();
             ddlProvincias.DataSource = dataTable;
@@ -25,7 +25,7 @@ namespace TP5Grupo18
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e) {
-
+            string strNombre = Common.eliminarEspaciosDelTexto(txtNombre.Text);
         }
 
         private void limpiarControles() {

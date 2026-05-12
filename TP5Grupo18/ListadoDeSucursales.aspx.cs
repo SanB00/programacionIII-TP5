@@ -13,7 +13,7 @@ namespace TP5Grupo18
 
         private void cargarListaSucursales() {
             const string consultaSQL = "SELECT * FROM Sucursal";
-            DataTable dataTable = new ConexionBBDD().obtenerTablaDeLaBaseDeDatos(consultaSQL);
+            DataTable dataTable = new Conexion().ejecutarConsulta(consultaSQL);
             gvSucursales.DataSource = dataTable;
             gvSucursales.DataBind();
         }
