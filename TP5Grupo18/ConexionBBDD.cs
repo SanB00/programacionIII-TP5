@@ -7,6 +7,32 @@ namespace TP5Grupo18
 {
     public class ConexionBBDD
     {
+
+        private const string cadenaConexion = @"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
+        /*
+        cadenaParaEntrega
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost\\sqlexpress;Integrated Security=True";
+				 
+		
+		Santi
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
+			 
+			 
+		Lautaro
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
+			 
+			 
+		Yulieth 
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=DESKTOP-RFDMNU2\SQLEXPRESS;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
+			 
+			 
+		Franco 
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost\SQLEXPRESS;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
+			 
+			 
+		Elian | Guillermo
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True";
+         */
         public string obtenerCadenaDeConexion(string nombreBBDD) {
             const string webconfigAttribute = "dbBase";
             try {
@@ -17,7 +43,7 @@ namespace TP5Grupo18
                 throw new Exception($"Error al obtener la cadena de conexión '{webconfigAttribute}'. Revisar WEB.CONFIG: \n\n" + e.Message);
             }
         }
-        public DataTable obtenerTablaDeLaBaseDeDatos(string consultaSQL, string cadenaConexion = null, SqlParameter[] parametros = null) {
+        public DataTable obtenerTablaDeLaBaseDeDatos(string consultaSQL, SqlParameter[] parametros = null) {
             string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
             DataTable dataTable = new DataTable();
 
@@ -55,13 +81,12 @@ namespace TP5Grupo18
 
         /* @autor: Lautaro
          * Ejecuta una consulta SQL de tipo INSERT, UPDATE o DELETE y devuelve la cantidad de filas afectadas.
-         * Ejemplo de uso:
-         * string consulta = "UPDATE Empleados SET Salario = Salario * 1.1 WHERE Departamento = 'Ventas'";
+         * @param consultaSQL: La consulta SQL a ejecutar. Ejemplo:´ "UPDATE Empleados SET Salario = Salario * 1.1 WHERE Departamento = 'Ventas'";
          * int filasAfectadas = conexion.ejecutarTransaccion(consulta);
          */
         public int ejecutarTransaccion(string consultaSQL) {
-            string cadenaConexion = this.obtenerCadenaDeConexion("BDSucursales");
-            SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
+            string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
             SqlCommand sqlCommand = new SqlCommand(consultaSQL, sqlConnection);
