@@ -73,7 +73,7 @@
             <td class="colBordes">&nbsp;</td>
             <td class="colEtiquetas">&nbsp;</td>
             <td class="colCampos">&nbsp;</td>
-            <td class="colValidacion">&nbsp;</td>
+        <asp:Label ID="lblMensaje" runat="server"></asp:Label>
             <td class="colBordes">&nbsp;</td>
         </tr>
         <tr>
