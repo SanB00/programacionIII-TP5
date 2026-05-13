@@ -10,29 +10,25 @@ namespace TP5Grupo18
 
         private const string cadenaConexion = @"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
         /*
-        private const string cadenaConexion = null
-
         cadenaParaEntrega
-			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost\\sqlexpress;Integrated Security=True";
-				 
+			 private const string cadenaConexion = @"Data Source=localhost\\sqlexpress; Initial Catalog=BDSucursales;Integrated Security=True";
 		
-		Santi
-			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
-			 
+        //franco
+             private const string cadenaConexion = @"Data Source=localhost\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 			 
 		Lautaro
-			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
-			 
-			 
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";	 
+		
+  		Santi
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
+
+        Elian 
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True";
+         
 		Yulieth 
-			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=DESKTOP-RFDMNU2\SQLEXPRESS;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=DESKTOP-RFDMNU2\SQLEXPRESS;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";			 	 
 			 
-			 
-		Franco 
-			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost\SQLEXPRESS;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
-			 
-			 
-		Elian | Guillermo
+		Guillermo
 			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True";
          */
         public string obtenerCadenaDeConexion(string nombreBBDD) {

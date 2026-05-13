@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace TP5Grupo18
 {
     public partial class AgregarSucursal : System.Web.UI.Page
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
                 cargarProvincias();
@@ -24,10 +24,6 @@ namespace TP5Grupo18
             ddlProvincias.Items.Insert(0, new ListItem("-- Seleccione --", "0"));
         }
 
-        protected void btnAceptar_Click(object sender, EventArgs e) {
-            string strNombre = Common.eliminarEspaciosDelTexto(txtNombre.Text);
-        }
-
         private void limpiarControles() {
             txtNombre.Text = "";
             txtDescripcion.Text = "";
@@ -37,14 +33,13 @@ namespace TP5Grupo18
             }
         }
 
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
+        protected void btnAceptar_Click(object sender, EventArgs e) {
             // Validación
+            string strNombre = Common.eliminarEspaciosDelTexto(txtNombre.Text);
             if (txtNombre.Text.Trim() == "" ||
                 txtDescripcion.Text.Trim() == "" ||
                 txtDireccion.Text.Trim() == "" ||
-                ddlProvincias.SelectedValue == "0")
-            {
+                ddlProvincias.SelectedValue == "0") {
                 lblMensaje.Text = "Debe completar todos los campos.";
                 return;
             }
@@ -61,13 +56,11 @@ namespace TP5Grupo18
 
             int filas = conexion.ejecutarTransaccion(consultaSQL);
 
-            if (filas > 0)
-            {
+            if (filas > 0) {
                 lblMensaje.Text = "La sucursal se ha agregado con éxito";
-                LimpiarControles();
+                limpiarControles();
             }
-            else
-            {
+            else {
                 lblMensaje.Text = "Error al agregar la sucursal.";
             }
         }
