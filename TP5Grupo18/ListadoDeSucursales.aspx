@@ -18,7 +18,9 @@
             <td class="auto-style2">
                 <asp:TextBox ID="txtBusqueda" runat="server" Width="215px"></asp:TextBox>
             </td>
-            <td class="colValidacion">&nbsp;</td>
+            <td class="colValidacion">
+                <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
+            </td>
             <td class="colBordes">&nbsp;</td>
         </tr>
         <tr>

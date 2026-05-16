@@ -72,7 +72,7 @@ namespace TP5Grupo18
 
             if (filas > 0) {
                 lblMensaje.Text = "La sucursal se ha agregado con éxito";
-                LimpiarControles();
+                limpiarControles();
             }
             else {
                 lblMensaje.Text = "Error al agregar la sucursal.";
