@@ -6,22 +6,27 @@
     <table>
         <tr>
             <td class="colBordes">&nbsp;</td>
-            <td class="colEtiquetas">
+            <td class="colEtiquetas"></td>
+            <td class="colCampos">
                 <h2>Listado De Sucursales</h2>
             </td>
-            <td class="colCampos"></td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>
         <tr>
             <td class="colBordes">&nbsp;</td>
-            <td class="colEtiquetas">
-                Nombre de Sucursal
-            </td>
-            <td class="colCampos">
-                <asp:TextBox ID="txtNombreSucursal" runat="server"/>
+            <td class="colEtiquetas">&nbsp;</td>
+            <td class="colCampos">Nombre de Sucursal
+                <asp:TextBox ID="txtNombreSucursal" runat="server" />
                 <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
             </td>
+            <td class="colValidacion">&nbsp;</td>
+            <td class="colBordes">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="colBordes">&nbsp;</td>
+            <td class="colEtiquetas">&nbsp;</td>
+            <td class="colCampos">&nbsp; </td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>

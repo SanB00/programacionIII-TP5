@@ -73,13 +73,13 @@
             <td class="colBordes">&nbsp;</td>
             <td class="colEtiquetas">&nbsp;</td>
             <td class="colCampos">&nbsp;</td>
-        <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+            <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>
         <tr>
             <td class="colBordes">&nbsp;</td>
             <td class="colEtiquetas">&nbsp;</td>
-            <td class="colCampos">&nbsp;</td>
+            <td class="colCampos"<asp:Label ID="lblMensaje" runat="server"></asp:Label></td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>
