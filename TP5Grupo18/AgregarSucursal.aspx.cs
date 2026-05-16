@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace TP5Grupo18
@@ -32,10 +33,19 @@ namespace TP5Grupo18
                 ddlProvincias.SelectedIndex = 0;
             }
         }
+        private string FormatearEntrada(string texto) {
+            if (string.IsNullOrWhiteSpace(texto)) return "";
+
+
+            string limpio = texto.Trim();
+            if (limpio.Length > 1)
+                return char.ToUpper(limpio[0]) + limpio.Substring(1);
+
+            return limpio.ToUpper();
+        }
 
         protected void btnAceptar_Click(object sender, EventArgs e) {
             // Validación
-            string strNombre = Common.eliminarEspaciosDelTexto(txtNombre.Text);
             if (txtNombre.Text.Trim() == "" ||
                 txtDescripcion.Text.Trim() == "" ||
                 txtDireccion.Text.Trim() == "" ||
@@ -44,12 +54,16 @@ namespace TP5Grupo18
                 return;
             }
 
+            string nombre = FormatearEntrada(txtNombre.Text);
+            string descripcion = FormatearEntrada(txtDescripcion.Text);
+            string direccion = FormatearEntrada(txtDireccion.Text);
+
             string consultaSQL = "INSERT INTO Sucursal " +
                                  "(NombreSucursal, DescripcionSucursal, DireccionSucursal, Id_ProvinciaSucursal) " +
                                  "VALUES ('" +
-                                 txtNombre.Text.Trim() + "', '" +
-                                 txtDescripcion.Text.Trim() + "', '" +
-                                 txtDireccion.Text.Trim() + "', " +
+                                 nombre + "', '" +
+                                 descripcion + "', '" +
+                                 direccion + "', " +
                                  ddlProvincias.SelectedValue + ")";
 
             Conexion conexion = new Conexion();
@@ -58,7 +72,7 @@ namespace TP5Grupo18
 
             if (filas > 0) {
                 lblMensaje.Text = "La sucursal se ha agregado con éxito";
-                limpiarControles();
+                LimpiarControles();
             }
             else {
                 lblMensaje.Text = "Error al agregar la sucursal.";
