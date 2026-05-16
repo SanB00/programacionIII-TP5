@@ -14,11 +14,9 @@
             <td class="colBordes">&nbsp;</td>
         </tr>
         <tr>
-            <td class="colBordes">&nbsp;</td>
-            <td class="colEtiquetas">&nbsp;</td>
-            <td class="colCampos">Nombre de Sucursal
-                <asp:TextBox ID="txtNombreSucursal" runat="server" />
-                <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
+            <td class="auto-style6">Busqueda Ingrese Id busqueda:</td>
+            <td class="auto-style2">
+                <asp:TextBox ID="txtBusqueda" runat="server" Width="215px"></asp:TextBox>
             </td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>

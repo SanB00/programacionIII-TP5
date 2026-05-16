@@ -1,26 +1,57 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace TP5Grupo18
 {
-    public partial class ListadoDeSucursales : System.Web.UI.Page
+    public class ConexionBBDD
     {
-        /*
-        protected void Page_Load(object sender, EventArgs e) {
-            cargarListaSucursales();
+        //RUTA BDSucursales
+        private const string cadenaConexion = @"Data Source=DESKTOP-RFDMNU2\SQLEXPRESS;Initial Catalog=BDSucursales;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
+   
+        public DataTable oobtenerTablaDeLaBaseDeDatos(string consultaSQL)
+        {
+            SqlConnection Conexion = new SqlConnection(cadenaConexion);
+            SqlDataAdapter adapter = new SqlDataAdapter (consultaSQL, Conexion);
+            DataTable tabla = new DataTable();
+
+            adapter.Fill(tabla);
+            return tabla;
+
+        }
+    
+    }
+        public partial class ListadoDeSucursales : System.Web.UI.Page
+    {
+        
+        protected void Page_Load(object sender, EventArgs e) 
+        {
+            if (!IsPostBack)
+            {
+                cargarListaSucursales();
+            }
         }
 
         private void cargarListaSucursales() {
             const string consultaSQL = "SELECT * FROM Sucursal";
-            DataTable dataTable = new ConexionBBDD().obtenerTablaDeLaBaseDeDatos(consultaSQL);
+            DataTable dataTable = new ConexionBBDD().oobtenerTablaDeLaBaseDeDatos(consultaSQL);
             gvSucursales.DataSource = dataTable;
             gvSucursales.DataBind();
         }
-
-        private void validarFiltro() {
-            string strFiltro = Common.eliminarEspaciosDelTexto(txtFiltro.Text);
+        private void cargarSucursalFiltrada()
+        {
+            string filtro = txtBusqueda.Text;
+            string consultaSQL = "SELECT * FROM Sucursal WHERE Id_Sucursal = " + filtro;
+            DataTable dataTale = new ConexionBBDD().oobtenerTablaDeLaBaseDeDatos(consultaSQL);
+            gvSucursales.DataSource = dataTale;
+            gvSucursales.DataBind();
+            txtBusqueda.Text = "";
         }
-        */
+        
+        /*private void validarFiltro() {
+            string strFiltro = Common.eliminarEspaciosDelTexto(txtFiltro.Text);
+        }*/
+        
     }
 }
