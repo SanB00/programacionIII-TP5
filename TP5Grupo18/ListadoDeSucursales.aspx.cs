@@ -41,7 +41,8 @@ namespace TP5Grupo18
         }
         private void cargarSucursalFiltrada() {
             string filtro = txtBusqueda.Text;
-            if (string.IsNullOrEmpty(filtro)) {
+            if (string.IsNullOrEmpty(filtro.Trim()))
+            {
                 cargarListaSucursales();
                 return;
             }
@@ -76,7 +77,7 @@ namespace TP5Grupo18
 
         protected void btnFiltrar_Click(object sender, EventArgs e) {
             cargarSucursalFiltrada();
-
+            txtBusqueda.Text = "";
         }
 
         /*private void validarFiltro() {
@@ -85,6 +86,7 @@ namespace TP5Grupo18
 
         protected void btnMostrarTodos_Click1(object sender, EventArgs e) {
             txtBusqueda.Text = "";
+            lblError.Visible = false;
             cargarListaSucursales();
         }
 
