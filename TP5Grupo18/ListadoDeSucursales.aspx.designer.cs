@@ -51,6 +51,24 @@ namespace TP5Grupo18
         protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
+        /// cvFiltrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvFiltrar;
+
+        /// <summary>
+        /// vsErrores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsErrores;
+
+        /// <summary>
         /// gvSucursales control.
         /// </summary>
         /// <remarks>
