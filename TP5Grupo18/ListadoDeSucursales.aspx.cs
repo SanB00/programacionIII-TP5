@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.DynamicData;
 using System.Web.UI.WebControls;
 
 namespace TP5Grupo18
@@ -43,9 +44,30 @@ namespace TP5Grupo18
                 cargarListaSucursales();
                 return;
             }
-            string consultaSQL = "SELECT * FROM Sucursal WHERE Id_Sucursal = " + filtro;
-            DataTable dataTale = new ConexionBBDD().oobtenerTablaDeLaBaseDeDatos(consultaSQL);
-            gvSucursales.DataSource = dataTale;
+
+            int id;
+
+            if (!int.TryParse(filtro, out id)) {
+                gvSucursales.DataSource = null;
+                gvSucursales.DataBind();
+                txtBusqueda.Text = "";
+                return;
+            }
+
+            string consultaSQL = "SELECT * FROM Sucursal WHERE Id_Sucursal = " + id;
+            DataTable dataTable = new ConexionBBDD().oobtenerTablaDeLaBaseDeDatos(consultaSQL);
+
+            if (dataTable.Rows.Count == 0) {
+                gvSucursales.DataBind();
+
+                lblError.Visible = true;
+
+                txtBusqueda.Text = "";
+                return;
+            }
+
+            lblError.Visible = false;
+            gvSucursales.DataSource = dataTable;
             gvSucursales.DataBind();
             txtBusqueda.Text = "";
         }

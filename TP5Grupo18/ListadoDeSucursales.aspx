@@ -21,7 +21,9 @@
                 <asp:TextBox ID="txtBusqueda" runat="server" Width="215px"></asp:TextBox>
                 <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
             </td>
-            <td class="colBordes">&nbsp;</td>
+            <td class="colBordes">
+                <asp:Label ID="lblError" runat="server" Text="No existe la sucursal" Visible="False"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td class="colBordes">&nbsp;</td>
