@@ -39,6 +39,10 @@ namespace TP5Grupo18
         }
         private void cargarSucursalFiltrada() {
             string filtro = txtBusqueda.Text;
+            if (string.IsNullOrEmpty(filtro)) {
+                cargarListaSucursales();
+                return;
+            }
             string consultaSQL = "SELECT * FROM Sucursal WHERE Id_Sucursal = " + filtro;
             DataTable dataTale = new ConexionBBDD().oobtenerTablaDeLaBaseDeDatos(consultaSQL);
             gvSucursales.DataSource = dataTale;

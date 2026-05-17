@@ -14,11 +14,11 @@
             <td class="colBordes">&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style6">Busqueda Ingrese Id busqueda:</td>
-            <td class="auto-style2">
+            <td class="colBordes">&nbsp;</td>
+            <td class="colEtiquetas"></td>
+           
+            <td class="colCampos">Busqueda Ingrese Id busqueda: 
                 <asp:TextBox ID="txtBusqueda" runat="server" Width="215px"></asp:TextBox>
-            </td>
-            <td class="colValidacion">
                 <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
             </td>
             <td class="colBordes">&nbsp;</td>
@@ -36,7 +36,6 @@
             <td class="colCampos">
                 <asp:GridView ID="gvSucursales" runat="server"></asp:GridView>
             </td>
-            <td class="colCampos">&nbsp;</td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>
