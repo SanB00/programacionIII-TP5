@@ -26,6 +26,7 @@ namespace TP5Grupo18
     public partial class ListadoDeSucursales : System.Web.UI.Page
     {
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
                 cargarListaSucursales();
@@ -57,8 +58,7 @@ namespace TP5Grupo18
             string consultaSQL = "SELECT * FROM Sucursal WHERE Id_Sucursal = " + id;
             DataTable dataTable = new ConexionBBDD().oobtenerTablaDeLaBaseDeDatos(consultaSQL);
 
-            if (dataTable.Rows.Count == 0)
-            {
+            if (dataTable.Rows.Count == 0) {
                 gvSucursales.DataSource = null;
                 gvSucursales.DataBind();
 
@@ -83,10 +83,10 @@ namespace TP5Grupo18
             string strFiltro = Common.eliminarEspaciosDelTexto(txtFiltro.Text);
         }*/
 
-        protected void btnMostrarTodos_Click1(object sender, EventArgs e)
-        {
+        protected void btnMostrarTodos_Click1(object sender, EventArgs e) {
             txtBusqueda.Text = "";
             cargarListaSucursales();
+        }
 
     }
 }

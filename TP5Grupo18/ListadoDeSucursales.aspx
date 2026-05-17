@@ -20,6 +20,8 @@
             <td class="colCampos">Busqueda Ingrese Id busqueda: 
                 <asp:TextBox ID="txtBusqueda" runat="server" Width="215px"></asp:TextBox>
                 <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
+                
+                <asp:Button ID="btnMostrarTodos" runat="server" OnClick="btnMostrarTodos_Click1" Text="Mostrar todos" />
             </td>
             <td class="colBordes">
                 <asp:Label ID="lblError" runat="server" Text="No existe la sucursal" Visible="False"></asp:Label>
@@ -29,9 +31,8 @@
             <td class="colBordes">&nbsp;</td>
             <td class="colEtiquetas">&nbsp;</td>
             <td class="colCampos">&nbsp; </td>
-            <td class="auto-style2">&nbsp;</td>
             <td class="colBordes">
-                <asp:Button ID="btnMostrarTodos" runat="server" OnClick="btnMostrarTodos_Click1" Text="Mostrar todos" />
+                
             </td>
             <td class="colBordes">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
