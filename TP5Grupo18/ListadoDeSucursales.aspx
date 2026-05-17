@@ -29,7 +29,11 @@
             <td class="colBordes">&nbsp;</td>
             <td class="colEtiquetas">&nbsp;</td>
             <td class="colCampos">&nbsp; </td>
-            <td class="colValidacion">&nbsp;</td>
+            <td class="auto-style2">&nbsp;</td>
+            <td class="colBordes">
+                <asp:Button ID="btnMostrarTodos" runat="server" OnClick="btnMostrarTodos_Click1" Text="Mostrar todos" />
+            </td>
+            <td class="colBordes">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>
         <tr>

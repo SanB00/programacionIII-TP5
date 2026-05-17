@@ -57,7 +57,9 @@ namespace TP5Grupo18
             string consultaSQL = "SELECT * FROM Sucursal WHERE Id_Sucursal = " + id;
             DataTable dataTable = new ConexionBBDD().oobtenerTablaDeLaBaseDeDatos(consultaSQL);
 
-            if (dataTable.Rows.Count == 0) {
+            if (dataTable.Rows.Count == 0)
+            {
+                gvSucursales.DataSource = null;
                 gvSucursales.DataBind();
 
                 lblError.Visible = true;
@@ -80,6 +82,11 @@ namespace TP5Grupo18
         /*private void validarFiltro() {
             string strFiltro = Common.eliminarEspaciosDelTexto(txtFiltro.Text);
         }*/
+
+        protected void btnMostrarTodos_Click1(object sender, EventArgs e)
+        {
+            txtBusqueda.Text = "";
+            cargarListaSucursales();
 
     }
 }
