@@ -5,8 +5,32 @@ using System.Data.SqlClient;
 
 namespace TP5Grupo18
 {
-    public class ConexionBBDD
+    public class Conexion
     {
+
+        private const string cadenaConexion = @"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
+        /*
+        cadenaParaEntrega
+			 private const string cadenaConexion = @"Data Source=localhost\\sqlexpress; Initial Catalog=BDSucursales;Integrated Security=True";
+		
+        //franco
+             private const string cadenaConexion = @"Data Source=localhost\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+			 
+		Lautaro
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";	 
+		
+  		Santi
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True";
+
+        Elian 
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True";
+         
+		Yulieth 
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=DESKTOP-RFDMNU2\SQLEXPRESS;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";			 	 
+			 
+		Guillermo
+			 private const string cadenaConexion=@"Initial Catalog=BDSucursales;Data Source=localhost;Integrated Security=True";
+         */
         public string obtenerCadenaDeConexion(string nombreBBDD) {
             const string webconfigAttribute = "dbBase";
             try {
@@ -17,7 +41,15 @@ namespace TP5Grupo18
                 throw new Exception($"Error al obtener la cadena de conexión '{webconfigAttribute}'. Revisar WEB.CONFIG: \n\n" + e.Message);
             }
         }
-        public DataTable obtenerTablaDeLaBaseDeDatos(string consultaSQL, string cadenaConexion = null, SqlParameter[] parametros = null) {
+
+        /* @autor Santi | Elián
+         * ejecutarConsulta antes llamado obtenerTablaDeLaBaseDeDatos
+         * @param consultaSQL: La consulta SQL a ejecutar. Ejemplo: "SELECT * FROM Sucursal WHERE Ciudad = @Ciudad";
+         * @param parametros: Un array de SqlParameter para evitar inyecciones SQL. Ejemplo: new SqlParameter[] { new SqlParameter("@Ciudad", "Buenos Aires") }
+         * @return DataTable con los resultados de la consulta. Si no hay resultados, devuelve un DataTable vacío (sin filas).
+         * @throws Exception con mensaje detallado en caso de error de conexión o consulta.
+         */
+        public DataTable ejecutarConsulta(string consultaSQL, SqlParameter[] parametros = null) {
             string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
             DataTable dataTable = new DataTable();
 
@@ -55,13 +87,11 @@ namespace TP5Grupo18
 
         /* @autor: Lautaro
          * Ejecuta una consulta SQL de tipo INSERT, UPDATE o DELETE y devuelve la cantidad de filas afectadas.
-         * Ejemplo de uso:
-         * string consulta = "UPDATE Empleados SET Salario = Salario * 1.1 WHERE Departamento = 'Ventas'";
-         * int filasAfectadas = conexion.ejecutarTransaccion(consulta);
+         * @param consultaSQL: La consulta SQL a ejecutar. Ejemplo:´ "UPDATE Empleados SET Salario = Salario * 1.1 WHERE Departamento = 'Ventas'";
          */
         public int ejecutarTransaccion(string consultaSQL) {
-            string cadenaConexion = this.obtenerCadenaDeConexion("BDSucursales");
-            SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
+            string connectionString = string.IsNullOrEmpty(cadenaConexion) ? this.obtenerCadenaDeConexion("BDSucursales") : cadenaConexion;
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
             SqlCommand sqlCommand = new SqlCommand(consultaSQL, sqlConnection);

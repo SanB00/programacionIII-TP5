@@ -6,15 +6,50 @@
     <table>
         <tr>
             <td class="colBordes">&nbsp;</td>
-            <td class="colEtiquetas"><h2>Listado De Sucursales</h2></td>
-            <td class="colCampos"></td>
+            <td class="colEtiquetas"></td>
+            <td class="colCampos">
+                <h2>Listado De Sucursales</h2>
+            </td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>
         <tr>
             <td class="colBordes">&nbsp;</td>
+            <td class="colEtiquetas"></td>
+
+            <td class="colCampos">Busqueda Ingrese Id busqueda: 
+                <asp:TextBox ID="txtBusqueda" runat="server" Width="215px"></asp:TextBox>
+                <asp:Button ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" />
+
+                <asp:Button ID="btnMostrarTodos" runat="server" OnClick="btnMostrarTodos_Click1" Text="Mostrar todos" />
+            </td>
+            <td class="colBordes"> </td>
+        </tr>
+        <tr>
+            <td class="colBordes">&nbsp;</td>
             <td class="colEtiquetas">&nbsp;</td>
-            <td class="colCampos">&nbsp;</td>
+            <td class="colCampos">
+                <asp:Label ID="lblError" runat="server" Text="No existe la sucursal" Visible="False" />
+                &nbsp; 
+                <asp:CompareValidator ID="cvFiltrar" runat="server" ControlToValidate="txtBusqueda" ErrorMessage="Debe ingresar un número mayor a 0" Operator="GreaterThan" Type="Integer" ValueToCompare="0">*</asp:CompareValidator>
+                <asp:ValidationSummary ID="vsErrores" runat="server" ShowMessageBox="true" ShowSummary="true" />
+            </td>
+            <td class="colValidacion">&nbsp; </td>
+            <td class="colBordes">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="colBordes">&nbsp;</td>
+            <td class="colEtiquetas">&nbsp;</td>
+            <td class="colCampos">&nbsp; </td>
+            <td class="colValidacion">&nbsp; </td>
+            <td class="colBordes">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="colBordes">&nbsp;</td>
+            <td class="colEtiquetas">&nbsp;</td>
+            <td class="colCampos">
+                <asp:GridView ID="gvSucursales" runat="server"></asp:GridView>
+            </td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
         </tr>

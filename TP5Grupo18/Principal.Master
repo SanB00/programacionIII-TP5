@@ -64,13 +64,13 @@
         <div>
             <ul class="nav">
                 <li>
-                    <asp:HyperLink ID="lnkAgregarSucursal" runat="server" Text="Agregar sucursal" />
+                    <asp:HyperLink ID="lnkAgregarSucursal" runat="server" Text="Agregar sucursal" NavigateUrl="~/AgregarSucursal.aspx" />
                 </li>
                 <li>
-                    <asp:HyperLink ID="lnkListadoDeSucursales" runat="server" Text="Listado de sucursales" />
+                    <asp:HyperLink ID="lnkListadoDeSucursales" runat="server" Text="Listado de sucursales" NavigateUrl="~/ListadoDeSucursales.aspx" />
                 </li>
                 <li>
-                    <asp:HyperLink ID="lnkEliminarSucursal" runat="server" Text="Eliminar sucursal" />
+                    <asp:HyperLink ID="lnkEliminarSucursal" runat="server" Text="Eliminar sucursal" NavigateUrl="~/EliminarSucursal.aspx" />
                 </li>
             </ul>
             <br />

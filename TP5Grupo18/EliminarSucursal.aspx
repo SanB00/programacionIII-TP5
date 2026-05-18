@@ -6,9 +6,34 @@
     <table>
         <tr>
             <td class="colBordes">&nbsp;</td>
-            <td class="colEtiquetas">
-                <h2>Eliminar sucursal</h2>
+            <td class="colEtiquetas"></td>
+            <td class="colCampos">
+                <h2>Eliminar Sucursal</h2>
             </td>
+            <td class="colValidacion">&nbsp;</td>
+            <td class="colBordes">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="colBordes">&nbsp;</td>
+            <td class="colEtiquetas">&nbsp;</td>
+            <td class="colCampos">&nbsp; </td>
+            <td class="colValidacion">&nbsp; </td>
+            <td class="colBordes">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="colBordes">&nbsp;</td>
+            <td class="colEtiquetas">Ingrese el ID de sucursal: </td>
+            <td class="colCampos">
+                <asp:TextBox ID="txtIdSucursal" runat="server" />&nbsp;
+                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+            </td>
+            <td class="colValidacion">
+                <asp:Label ID="lblMensaje" runat="server"></asp:Label></td>
+            <td class="colBordes">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="colBordes">&nbsp;</td>
+            <td class="colEtiquetas">&nbsp;</td>
             <td class="colCampos">&nbsp;</td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
