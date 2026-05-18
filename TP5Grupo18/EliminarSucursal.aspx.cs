@@ -15,6 +15,17 @@ namespace TP5Grupo18
                 lblMensaje.Text = "Por favor ingrese una sucursal valida.";
                 return;
             }
+           
+            string consultaSQL = "DELETE FROM Sucursal WHERE Id_Sucursal = " + idSucursal;
+            int filasAfectadas = new Conexion().ejecutarTransaccion(consultaSQL);
+
+            if (filasAfectadas == 0)
+            {
+                lblMensaje.Text = "La sucursal se ha eliminado con éxito";
+                return;
+            }
+
+
         }
     }
 }
