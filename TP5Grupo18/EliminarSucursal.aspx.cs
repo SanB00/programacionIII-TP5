@@ -10,17 +10,23 @@ namespace TP5Grupo18
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e) {
-            int idSucursal;
-            if (!int.TryParse(txtIdSucursal.Text.Trim(), out idSucursal) || idSucursal <= 0) {
-                lblMensaje.Text = "Por favor ingrese una sucursal valida.";
+            String strIdSucursal = Common.eliminarEspaciosDelTexto(txtIdSucursal.Text);
+            string msgDeErrores = String.Empty;
+            if (string.IsNullOrEmpty(strIdSucursal)) { msgDeErrores += "\n * Por favor completar el campo"; }
+            if (!int.TryParse(txtIdSucursal.Text.Trim(), out int idSucursal) || idSucursal <= 0) {
+                msgDeErrores += "\n * Por favor ingrese una sucursal válida.";
+            }
+            if (!Common.esUnNroValidoMayorACero(strIdSucursal)) { msgDeErrores += "\n * Por favor ingresar un número mayor a 0."; }
+
+            if (!string.IsNullOrEmpty(msgDeErrores)) {
+                Common.mostrarMensajeEnAlerta("Errores:" + msgDeErrores, this);
                 return;
             }
-           
+
             string consultaSQL = "DELETE FROM Sucursal WHERE Id_Sucursal = " + idSucursal;
             int filasAfectadas = new Conexion().ejecutarTransaccion(consultaSQL);
 
-            if (filasAfectadas == 0)
-            {
+            if (filasAfectadas == 0) {
                 lblMensaje.Text = "La sucursal se ha eliminado con éxito";
                 return;
             }
