@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web.DynamicData;
-using System.Web.UI.WebControls;
 
 namespace TP5Grupo18
 {
@@ -41,8 +39,7 @@ namespace TP5Grupo18
         }
         private void cargarSucursalFiltrada() {
             string filtro = txtBusqueda.Text;
-            if (string.IsNullOrEmpty(filtro.Trim()))
-            {
+            if (string.IsNullOrEmpty(filtro.Trim())) {
                 cargarListaSucursales();
                 return;
             }
