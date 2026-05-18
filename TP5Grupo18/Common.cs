@@ -11,6 +11,9 @@ namespace TP5Grupo18
             return Regex.Replace(texto.Trim(), @"\s+", " ");
         }
         public static bool esUnNroValido(string texto) {
+            return int.TryParse(texto, out int nroValidar) && nroValidar >= 0; //texto.All(char.IsDigit)
+        }
+        public static bool esUnNroValidoMayorACero(string texto) {
             return int.TryParse(texto, out int nroValidar) && nroValidar > 0; //texto.All(char.IsDigit)
         }
         public static bool esSoloLetras(string texto) {
