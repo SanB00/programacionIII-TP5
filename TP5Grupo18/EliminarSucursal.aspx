@@ -56,14 +56,16 @@
                 <asp:TextBox ID="tbIDsucursal" runat="server" Width="216px"></asp:TextBox>
             </td>
             <td class="auto-style5">
-                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" />
+                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
             </td>
             <td class="auto-style6"></td>
             <td class="auto-style7"></td>
         </tr>
         <tr>
             <td class="auto-style1">&nbsp;</td>
-            <td class="auto-style2">&nbsp;</td>
+            <td class="auto-style2">
+                <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+            </td>
             <td class="colCampos">&nbsp;</td>
             <td class="colValidacion">&nbsp;</td>
             <td class="colBordes">&nbsp;</td>
